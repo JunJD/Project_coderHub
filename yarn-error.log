@@ -1,0 +1,56 @@
+Arguments: 
+  D:\Program Files\nodejs\node.exe D:\Program Files\nodejs\node_modules\yarn\bin\yarn.js add body-bodyparser
+
+PATH: 
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Program Files (x86)\Git\cmd;D:\Program Files\Microsoft VS Code\bin;C:\Users\ding\AppData\Roaming\nvm;D:\Program Files\nodejs;C:\Users\ding\AppData\Local\Microsoft\WindowsApps;C:\Users\ding\AppData\Roaming\nvm;D:\Program Files\nodejs;%ANDROID_SDK_ROOT%\platform-tools;%ANDROID_SDK_ROOT%\emulator;%ANDROID_SDK_ROOT%\tools;%ANDROID_SDK_ROOT%\tools\bin;D:\Users\ding\AppData\Local\android\Sdk\platform-tools;D:\Dark-Flutter\flutter\bin;C:\Program Files\MySQL\MySQL Server 8.0\bin;
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.13.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: https://registry.npmmirror.com/body-bodyparser: [NOT_FOUND] body-bodyparser not found
+      at Request.params.callback [as _callback] (C:\Users\ding\AppData\Roaming\nvm\v16.13.0\node_modules\yarn\lib\cli.js:66145:18)
+      at Request.self.callback (C:\Users\ding\AppData\Roaming\nvm\v16.13.0\node_modules\yarn\lib\cli.js:140890:22)
+      at Request.emit (node:events:390:28)
+      at Request.<anonymous> (C:\Users\ding\AppData\Roaming\nvm\v16.13.0\node_modules\yarn\lib\cli.js:141862:10)
+      at Request.emit (node:events:390:28)
+      at Gunzip.<anonymous> (C:\Users\ding\AppData\Roaming\nvm\v16.13.0\node_modules\yarn\lib\cli.js:141784:12)
+      at Object.onceWrapper (node:events:509:28)
+      at Gunzip.emit (node:events:390:28)
+      at endReadableNT (node:internal/streams/readable:1343:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+
+npm manifest: 
+  {
+    "name": "project_coderhub",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "nodemon index.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "dotenv": "^16.0.1",
+      "koa": "^2.13.0",
+      "koa-router": "^12.0.0"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.19"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

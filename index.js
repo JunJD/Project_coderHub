@@ -1,8 +1,8 @@
-const Koa = require("koa");
+const app = require('./src/app')
+const config = require('./src/app/config')
 
-const app = new Koa();
-
-app.listen(8000,err=>{
+app.listen(config.APP_PORT,err=>{
     if(err) {console.log(err);}
-    console.log('8000端口启动成功')
-})
+    console.log(`${config.APP_PORT}端口启动成功`)
+});
+
