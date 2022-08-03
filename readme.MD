@@ -17,12 +17,13 @@
 1. 用户名密码不能为空
 2. 用户名没有被注册过
 
->说明:请在根目录下新建.env文件，并配置一下信息
+>说明1:请在根目录下新建.env文件，并配置一下信息
 >>>APP_PORT = 本地启动服务的端口
 MYSQL_HOST = 数据库服务的地址
 MYSQL_PORT = 数据库服务的端口
 MYSQL_DATABASE = 数据库名
 MYSQL_USER = 数据库用户名一般为root
 MYSQL_PASSWORD = 数据库密码
->yarn start | npm start 启动服务
+
+>说明2:yarn start | npm start 启动服务
 
