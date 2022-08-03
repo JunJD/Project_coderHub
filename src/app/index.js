@@ -4,6 +4,7 @@ const bodyParser = require('koa-bodyparser')
 
 // 内部引入--路由相关
 const userRouter = require('./../router/user.router')
+const errorHandle = require('./error-handle')
 
 // 使用app 
 const app = new Koa();
@@ -13,7 +14,7 @@ app.use(bodyParser())
 app.use(userRouter.routes())// 用来注册路由使路由生效
 app.use(userRouter.allowedMethods());// 限制前端使用正确的请求方式  
 
-
+app.on('error',errorHandle)
 
 
 
