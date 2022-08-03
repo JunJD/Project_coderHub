@@ -1,5 +1,6 @@
 const {
-    NAME_OR_PASSWORD_IS_REQUIRED
+    NAME_OR_PASSWORD_IS_REQUIRED,
+    USER_ALREADY_EXISTS
 } = require('./../contants/error-types')
 
 const errorHandle = (error,ctx) => {
@@ -8,6 +9,10 @@ const errorHandle = (error,ctx) => {
         case NAME_OR_PASSWORD_IS_REQUIRED:
             status = 400;
             message = "用户名或者密码不能为空";
+            break;
+        case USER_ALREADY_EXISTS:
+            status = 400;
+            message = "用户名重复";
             break;
         default:
             status = 404;

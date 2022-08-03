@@ -12,6 +12,12 @@ class UserService {
         
         return result
     }   
+
+    async getUserName(name){
+        const statement = `Select * from users where name = ?;`
+        const result = await connection.execute(statement,[name]);
+        return result;
+    }
 }
 
 module.exports = new UserService 
