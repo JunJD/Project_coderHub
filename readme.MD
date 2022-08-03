@@ -24,5 +24,5 @@ MYSQL_PORT = 数据库服务的端口
 MYSQL_DATABASE = 数据库名
 MYSQL_USER = 数据库用户名一般为root
 MYSQL_PASSWORD = 数据库密码
->>>yarn start | npm start 启动服务
+>yarn start | npm start 启动服务
 
