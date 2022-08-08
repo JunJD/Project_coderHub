@@ -16,7 +16,7 @@ class UserService {
     async getUserName(name){
         const statement = `Select * from users where name = ?;`
         const result = await connection.execute(statement,[name]);
-        return result;
+        return result[0];
     }
 }
 
