@@ -12,7 +12,16 @@
          // 查询数据
 
          // 返回数据
-         ctx.body = "登录成功"
+         ctx.body = {
+            success:'true',
+            message:"登录成功",
+            result:{
+                success:'true',
+                result:[
+                    {code:1,value:'没数据'}
+                ]
+            }
+         }
      }
  }
  
