@@ -16,11 +16,15 @@ const connections = mysql.createPool({
 })
 
 connections.getConnection((err,conn)=>{    
-    if(err)console.log('链接失败：',err);
+    try {
+        if(err)console.log('链接失败：',err);
 
     conn.connect(err=>{        
         console.log('数据库链接成功');
     })
+    } catch (error) {
+      console.log('出错了')  
+    }
 })
 
 module.exports = connections.promise()

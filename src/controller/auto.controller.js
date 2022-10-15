@@ -15,6 +15,14 @@
          ctx.body = {
             success:'true',
             message:"登录成功",
+            data:{
+                token:{
+                    admin : "admin-token",
+                    guest : "guest-token",
+                    editor : "editor-token"
+                },
+            },
+            code:200,
             result:{
                 success:'true',
                 result:[
