@@ -3,25 +3,23 @@
  */
 
 //  const {create} = require('./../service/use.service')
-
+ const jwt = require('jsonwebtoken');
+ const { PRIVATE_KEY } = require('../app/config');
  class  AutoController {
      async login(ctx,next) {
          // 获取用户请求传递的参数
-         const {name} = ctx.request.body
-         
-         // 查询数据
+         const { id, name } = ctx.user;
+        const token = jwt.sign({ id, name }, PRIVATE_KEY, {
+           expiresIn: 60 * 60 * 24,
+           algorithm: 'RS256'
+        });
+      
 
          // 返回数据
          ctx.body = {
             success:'true',
             message:"登录成功",
-            data:{
-                token:{
-                    admin : "admin-token",
-                    guest : "guest-token",
-                    editor : "editor-token"
-                },
-            },
+            accessToken :token,
             code:200,
             result:{
                 success:'true',

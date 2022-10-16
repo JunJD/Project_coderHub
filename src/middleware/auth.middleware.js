@@ -1,9 +1,9 @@
 const {
     NAME_OR_PASSWORD_IS_REQUIRED,
     USER__DOES_NOT_EXISTS,PASSWORD_IS_INCORRENT
-} = require('./../contants/error-types')
-const md5password = require('./../utils/password-handle')
-const service = require('./../service/use.service')
+} = require('../contants/error-types')
+const md5password = require('../utils/password-handle')
+const service = require('../service/use.service')
 
 const verifyLogin = async(ctx, next) => {
     const { name, password } = ctx.request.body
@@ -25,7 +25,7 @@ const verifyLogin = async(ctx, next) => {
         const error = new Error(PASSWORD_IS_INCORRENT)
         return ctx.app.emit('error', error, ctx)
     }
-
+    ctx.user = user;
     await next()
 
 }

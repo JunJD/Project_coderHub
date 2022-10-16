@@ -6,11 +6,11 @@ const autoRouter = new Router()
  
 const {
     verifyLogin
-} = require('./../middleware/auto.middleware')
+} = require('../middleware/auth.middleware')
 
 const {
     login
-} = require('./../controller/auto.controller')
+} = require('../controller/auth.controller')
  
  autoRouter.post('/login',verifyLogin,login);
  
