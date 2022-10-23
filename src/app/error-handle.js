@@ -2,7 +2,8 @@ const {
     NAME_OR_PASSWORD_IS_REQUIRED,
     USER_ALREADY_EXISTS,
     USER__DOES_NOT_EXISTS,
-    PASSWORD_IS_INCORRENT
+    PASSWORD_IS_INCORRENT,
+    UNAUTHORIZATION
 } = require('./../contants/error-types')
 
 const errorHandle = (error,ctx) => {
@@ -23,6 +24,10 @@ const errorHandle = (error,ctx) => {
         case PASSWORD_IS_INCORRENT:
             status = 402;
             message = "密码错误";
+            break;
+        case UNAUTHORIZATION:
+            status = 401; // 参数错误
+            message = "无效的token~";
             break;
         default:
             status = 404;
