@@ -15,8 +15,16 @@
     //  }
      async getAdmin(ctx,next) {
          // 获取用户请求传递的参数
+         const { page, size, fuzzy } = ctx.request.body
          // 查询数据
-         const result = await getAdmin()
+         let result = await getAdmin()
+
+         if( fuzzy ){
+            result = result.filter(item => {
+                return (item.user_name+"").toUpperCase().includes((fuzzy+"").toUpperCase())
+            })
+         }
+
          // 返回数据
          ctx.body = {
              success:'true',

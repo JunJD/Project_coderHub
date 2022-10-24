@@ -15,6 +15,6 @@
  } = require('./../controller/admin.controller')
  
 //  adminRouter.post('/', verifyAuth , create);
- adminRouter.post('/get' , verifyAuth, getAdmin);
+ adminRouter.post('/get' , getAdmin);
  
  module.exports = adminRouter
