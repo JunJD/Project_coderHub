@@ -19,10 +19,10 @@ class Menuservice {
             key: item.path,
             id:item.id,
             idDelete:Boolean(item.is_delete === 0)
-        }))
+        })).filter(item=>item.idDelete)
         function convert(list) {
             const res = []
-            const map = list.reduce((res, v) => (res[v.id] = v, v.children = [], res), {})
+            const map = list.reduce((res, v) => (res[v.id] = v, res), {})
             for (const item of list) {
                 if (item.parentId === 0) {
                     res.push(item)
@@ -33,14 +33,9 @@ class Menuservice {
                     parent.children = parent.children || []
                     parent.children.push(item)
                 }
+
             }
-            return res.map(item=>({
-                parentId:item.parentId,
-                label: item.label,
-                key: item.key,
-                children:item.children,
-                idDelete:item.idDelete
-            })).filter(item=>item.idDelete)
+            return res
         }
         return convert(data);
     }
