@@ -18,6 +18,31 @@ class  MenuController {
 
         // 查询数据
         const result = await getMenu()
+        let data = result[0].map(item=>({
+            parentId:item.parent_id,
+            label: item.name,
+            key: item.path,
+            id:item.id,
+            icon:item.icon_url,
+            idDelete:Boolean(item.is_delete === 0)
+        })).filter(item=>item.idDelete)
+        function convert(list) {
+            const res = []
+            const map = list.reduce((res, v) => (res[v.id] = v, res), {})
+            for (const item of list) {
+                if (item.parentId === 0) {
+                    res.push(item)
+                    continue
+                }
+                if (item.parentId in map) {
+                    const parent = map[item.parentId]
+                    parent.children = parent.children || []
+                    parent.children.push(item)
+                }
+
+            }
+            return res
+        }
         // 返回数据
         ctx.body = {
             success:'true',
@@ -26,7 +51,7 @@ class  MenuController {
             result:{
                 success:'true',
                 result:{
-                    data:result
+                    data:convert(data)
                 }
             }
          }
