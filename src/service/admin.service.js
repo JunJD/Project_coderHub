@@ -12,7 +12,6 @@
     //  }   
  
      async getAdmin(){
-        console.log('我执行了')
          const statement = `select id,user_name,email,salt,role_id from ng_admin`
          const result = await connection.execute(statement);
          return result[0];

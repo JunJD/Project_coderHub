@@ -3,7 +3,9 @@ const {
     USER_ALREADY_EXISTS,
     USER__DOES_NOT_EXISTS,
     PASSWORD_IS_INCORRENT,
-    UNAUTHORIZATION
+    UNAUTHORIZATION,
+    USERNAME_IS_REQUIRED,
+    DOES_NOT_HAVE_PERMISSON
 } = require('./../contants/error-types')
 
 const errorHandle = (error,ctx) => {
@@ -28,6 +30,14 @@ const errorHandle = (error,ctx) => {
         case UNAUTHORIZATION:
             status = 401; // 参数错误
             message = "无效的token~";
+            break;
+        case USERNAME_IS_REQUIRED:
+            status = 401; // 参数错误
+            message = "用户名必填";
+            break;
+        case DOES_NOT_HAVE_PERMISSON:
+            status = 401; // 参数错误
+            message = "请先给此用户配置权限";
             break;
         default:
             status = 404;

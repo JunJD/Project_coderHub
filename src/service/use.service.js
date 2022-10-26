@@ -5,8 +5,8 @@ const connection = require('./../app/database')
 class UserService {
     async create(user){
         const {name,password} = user 
-
-        const statement = `INSERT INTO users (name,password) VALUES (?,?)`
+        console.log(password)
+        const statement = `INSERT INTO ng_admin (user_name,password) VALUES (?,?)`
         
         const result = await connection.execute(statement,[name,password])
         
@@ -14,7 +14,7 @@ class UserService {
     }   
 
     async getUserName(name){
-        const statement = `Select * from users where name = ?;`
+        const statement = `Select * from ng_admin where user_name = ?;`
         const result = await connection.execute(statement,[name]);
         return result[0];
     }
