@@ -14,7 +14,6 @@
      getRole
  } = require('./../controller/role.controller')
  
-//  menuRouter.post('/', verifyAuth , create);
  roleRouter.post('/get' , verifyAuth, getRole);
  
  module.exports = roleRouter

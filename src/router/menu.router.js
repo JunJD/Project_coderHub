@@ -10,16 +10,10 @@ const {
 } = require('../middleware/auth.middleware')
 
 const {
-  verifyRole,
-  verifyMenu
-} = require('../middleware/menu.middleware')
-
-const {
     create,
     getMenu
 } = require('./../controller/menu.controller')
 
 menuRouter.post('/', create);
-menuRouter.post('/get', verifyAuth, verifyRole, verifyMenu, getMenu);
-
+menuRouter.post('/get' , verifyAuth, getMenu);
 module.exports = menuRouter

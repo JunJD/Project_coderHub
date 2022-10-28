@@ -10,12 +10,22 @@ class Menuservice {
         return result
     }   
 
-    async getMenu(){
-        const statement = `select id, name,menu_code,parent_id,path,icon_url,is_delete from auth_menu`
-        const result = await connection.execute(statement);
+    async getMenu(id){
 
-        return result;
+        const statement = `
+        SELECT 
+            ra.id id, am.id as value, am.name label, am.icon_url icon, am.parent_id parentId
+        from user_role ur LEFT JOIN role_access ra ON  ur.role_id = ra.role_id
+        LEFT JOIN auth_menu am ON am.id = ra.access_id
+        WHERE am.is_delete = 0 and ur.uid = ?  
+        ;`
+
+        const result = await connection.execute(statement,[id]);
+
+        return result[0];
     }
+
+    
 }
 
 module.exports = new Menuservice 

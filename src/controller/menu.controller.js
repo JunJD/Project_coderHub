@@ -13,34 +13,25 @@ class  MenuController {
         // 返回数据
         ctx.body = result
     }
+
     async getMenu(ctx,next) {
-        
-        const {menuId} = ctx.request.body
+        const {id} = ctx.user ;
+        // 查询数据
+        const result = await getMenu(id)
 
-        const resultOrigin = await getMenu()
-        
-        const result = resultOrigin[0].filter(item => Boolean(menuId.find(i=>i===item.id)))
-
-        let data = result.map(item=>({
-            parentId:item.parent_id,
-            label: item.name,
-            key: item.path,
-            id:item.id,
-            icon:item.icon_url,
-            idDelete:Boolean(item.is_delete === 0)
-        })).filter(item=>item.idDelete)
         function convert(list) {
             const res = []
-            const map = list.reduce((res, v) => (res[v.id] = v, res), {})
-            for (const item of list) {
-                if (item.parentId === 0) {
-                    res.push(item)
-                    continue
-                }
-                if (item.parentId in map) {
-                    const parent = map[item.parentId]
+            const map = list.reduce((res, v) => (res[v.value] = v, res), {})
+            for (const key in map) {
+                    if (map[key].parentId === 0) {
+                        res.push(map[key])
+                        continue
+                    }
+
+                if (map[key].parentId in map) {
+                    const parent = map[map[key].parentId]
                     parent.children = parent.children || []
-                    parent.children.push(item)
+                    parent.children.push(map[key])
                 }
 
             }
@@ -54,7 +45,7 @@ class  MenuController {
             result:{
                 success:'true',
                 result:{
-                    data:convert(data)
+                    data:convert(result)
                 }
             }
          }
