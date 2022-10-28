@@ -5,9 +5,9 @@
  const Router = require('koa-router');
  const roleRouter = new Router({prefix:'/role'})
  
-//  const {
-//    verifyAuth
-//  } = require('../middleware/auth.middleware')
+ const {
+   verifyAuth
+ } = require('../middleware/auth.middleware')
  
  const {
     //  create,
@@ -15,6 +15,6 @@
  } = require('./../controller/role.controller')
  
 //  menuRouter.post('/', verifyAuth , create);
- roleRouter.post('/get' , getRole);
+ roleRouter.post('/get' , verifyAuth, getRole);
  
  module.exports = roleRouter

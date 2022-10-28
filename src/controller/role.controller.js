@@ -7,16 +7,10 @@
 
  class  RoleController {
      async getRole(ctx,next) {
-         const {id} = ctx.request.body
+        const {id} = ctx.user ;
          // 查询数据
-         const result0 = await getRole(id)
-
-         const arr = result0[0].act_list.split(',').map(Number)
-
-         const result1 = await getMenu()
-         const result = result1[0].filter(item => {
-           return arr.find(i=>i===item.id)
-         })
+         const result = await getRole(id)
+         
          console.log(result)
          // 返回数据
          ctx.body = result

@@ -24,5 +24,5 @@
      }
  }
  
- module.exports = new Adminservice 
+ module.exports = new Adminservice
  

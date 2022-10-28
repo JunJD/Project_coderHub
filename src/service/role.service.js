@@ -5,7 +5,16 @@
  class Roleservice {
         
      async getRole(id){
-        const statement = `Select * from ng_role where id = ?;`
+        
+        const statement = `
+            SELECT 
+                a.id id,
+                JSON_OBJECT('id', r.id, 'label', r.role_name ) role
+            from user_role a
+            LEFT JOIN ng_role r ON r.id = a.role_id
+            WHERE a.uid = ?
+        ;`
+
         const result = await connection.execute(statement,[id]);
         return result[0];
      }
