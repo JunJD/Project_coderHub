@@ -14,11 +14,11 @@ class  MenuController {
         ctx.body = result
     }
     async getMenu(ctx,next) {
-        // 获取用户请求传递的参数
+        
         const {menuId} = ctx.request.body
-        // 查询数据
+
         const resultOrigin = await getMenu()
-        // console.log(resultOrigin[0],menuId)
+        
         const result = resultOrigin[0].filter(item => Boolean(menuId.find(i=>i===item.id)))
 
         let data = result.map(item=>({

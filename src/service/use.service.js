@@ -19,6 +19,12 @@ class UserService {
         return result[0];
     }
 
+    async getUserId(id){
+        const statement = `Select * from ng_admin where id = ?;`
+        const result = await connection.execute(statement,[id]);
+        return result[0];
+    }
+
 }
 
 module.exports = new UserService 

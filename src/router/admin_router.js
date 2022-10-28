@@ -9,12 +9,18 @@
    verifyAuth
  } = require('../middleware/auth.middleware')
  
+
  const {
-    //  create,
+  verifyUser,
+  handlePassword
+} = require('./../middleware/user.middleware')
+
+ const {
+     create,
     getAdmin
  } = require('./../controller/admin.controller')
  
-//  adminRouter.post('/', verifyAuth , create);
+ adminRouter.post('/' , verifyAuth, verifyUser, handlePassword, create);
  adminRouter.post('/get' , getAdmin);
  
  module.exports = adminRouter
