@@ -14,7 +14,7 @@ class Menuservice {
 
         const statement = `
         SELECT 
-            ra.id id, am.id as value, am.name label, am.icon_url icon, am.parent_id parentId
+            am.id id, am.name label, am.icon_url icon, am.parent_id parentId, am.path path
         from user_role ur LEFT JOIN role_access ra ON  ur.role_id = ra.role_id
         LEFT JOIN auth_menu am ON am.id = ra.access_id
         WHERE am.is_delete = 0 and ur.uid = ?  

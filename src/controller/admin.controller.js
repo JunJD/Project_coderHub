@@ -11,8 +11,17 @@
          // 查询数据
          const result = await create(admin)
 
-         // 返回数据
-         ctx.body = result
+         ctx.body = {
+             success:'true',
+             message:"返回用户数据",
+             code:200,
+             result:{
+                 success:'true',
+                 result:{
+                     data:'ok'
+                 }
+             }
+          }
      }
      async getAdmin(ctx,next) {
          // 获取用户请求传递的参数

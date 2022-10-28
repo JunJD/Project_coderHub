@@ -21,7 +21,7 @@ class  MenuController {
 
         function convert(list) {
             const res = []
-            const map = list.reduce((res, v) => (res[v.value] = v, res), {})
+            const map = list.reduce((res, v) => (res[v.id] = v, res), {})
             for (const key in map) {
                     if (map[key].parentId === 0) {
                         res.push(map[key])

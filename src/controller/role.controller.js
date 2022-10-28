@@ -11,9 +11,18 @@
          // 查询数据
          const result = await getRole(id)
          
-         console.log(result)
          // 返回数据
-         ctx.body = result
+         ctx.body = {
+            success:'true',
+            message:"返回用户数据",
+            code:200,
+            result:{
+                success:'true',
+                result:{
+                    data:result
+                }
+            }
+         }
      }
  }
  
